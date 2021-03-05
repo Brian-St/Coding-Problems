@@ -1,0 +1,43 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+
+class Result {
+
+    /*
+     * Complete the 'compressedString' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts STRING message as parameter.
+     */
+
+    public static String compressedString(String message) {
+    // Write your code here
+        String compressed = ""; //final compressed string var
+        int count = 1;//keeps track of the recurrinng char
+        for (int i = 0; i < message.length() - 1; i++) {
+            if (message.charAt(i) == message.charAt(i+1)){
+                count++;
+            } else {
+                compressed = compressed + message.charAt(i) + count; 
+                count = 1;
+            }               
+        }
+        compressed = compressed + message.charAt(message.length() - 1) + count;
+        String finalCompressed = compressed.replaceAll("1",""); //remove 1's 
+        return finalCompressed;
+    }
+
+}
+
+public class Solution {
