@@ -40,7 +40,7 @@ class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
        int p1 = m - 1, p2 = n - 1, p = m + n - 1;
-    
+
     while (p1 >= 0 && p2 >= 0) {
         if (nums1[p1] > nums2[p2]) {
             nums1[p] = nums1[p1];
@@ -60,3 +60,10 @@ public:
     
     }
 };
+//Use three pointers:
+p1 starts at m - 1 (last valid element in nums1).
+p2 starts at n - 1 (last element in nums2).
+p starts at m + n - 1 (last position in nums1).
+Compare elements from the end and place the largest at position p, decrementing pointers accordingly.
+If nums2 has remaining elements, copy them into nums1 (since nums1 already has its elements correctly placed if any remain).
+This runs in O(m + n) time and O(1) space.
